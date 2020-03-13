@@ -3,6 +3,7 @@ package com.example.database;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -34,7 +35,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnDelete.setOnClickListener(this);
     }
 
-
+    public void showMessage(String message)
+    {
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setMessage(message);
+        builder.show();
+    }
 
     @Override
     public void onClick(View v) {
@@ -43,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if(v.getId()==R.id.btnInsert){
             StringBuffer record_details=myDbHelper.display_all_records();
-            showMessage("Display Status",record_details.toString());
+            showMessage(record_details.toString());
         }
 
     }
