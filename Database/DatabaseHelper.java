@@ -1,13 +1,11 @@
 package com.example.database;
 
 
-import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME="department.db";
@@ -35,13 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public void showMessage(String message)
-    {
-        Builder builder=new Builder(this);
-        builder.setCancelable(true);
-        builder.setMessage(message);
-        builder.show();
-    }
+
 
 
     public void insert_record(String name,int marks){
