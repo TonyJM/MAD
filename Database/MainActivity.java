@@ -2,7 +2,6 @@ package com.example.database;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.View;
@@ -35,10 +34,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnDelete.setOnClickListener(this);
     }
 
-    public void showMessage(String message)
+    public void showMessage(String title,String message)
     {
         AlertDialog.Builder builder=new AlertDialog.Builder(this);
         builder.setCancelable(true);
+        builder.setTitle(title);
         builder.setMessage(message);
         builder.show();
     }
@@ -48,11 +48,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(v.getId()==R.id.btnInsert){
             myDbHelper.insert_record(txtName.getText().toString(),Integer.parseInt(txtMarks.getText().toString()));
         }
-        if(v.getId()==R.id.btnInsert){
+        if(v.getId()==R.id.btnDisp){
             StringBuffer record_details=myDbHelper.display_all_records();
-            showMessage(record_details.toString());
+            showMessage("Display",record_details.toString());
         }
-
+        if(v.getId()==R.id.btnUpdate){
+            myDbHelper.update_record(txtName.getText().toString(),Integer.parseInt(txtMarks.getText().toString()));
+            showMessage("Success","Record Updated");
+        }
+        if(v.getId()==R.id.btnDel){
+            myDbHelper.delete_record(txtName.getText().toString());
+            showMessage("Success","Record Deleted");
+        }
     }
 
 }
