@@ -41,6 +41,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(query);
     }
 
+    public void update_record(String name, int marks) {
+        String query="UPDATE student_table SET Marks="+marks+ " WHERE Name='"+name+"';";
+        db.execSQL(query);
+    }
+
+    public void delete_record(String name){
+        String query="DELETE FROM student_table WHERE Name='"+name+"';";
+        db.execSQL(query);
+    }
+
+
+
     public StringBuffer display_all_records(){
         StringBuffer buffer=new StringBuffer();
         Cursor c=db.rawQuery("SELECT * FROM student_table",null);
